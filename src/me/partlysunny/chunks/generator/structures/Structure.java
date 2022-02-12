@@ -49,8 +49,8 @@ public abstract class Structure {
                     //If this chunk is chosen for this structure
                     if (r.nextDouble() < rarity) {
                         //Place it in a random position in the chunk
-                        int xPos = r.nextInt(Chunk.chunkWidth);
-                        int yPos = r.nextInt(Chunk.chunkWidth);
+                        int xPos = r.nextInt(Chunk.chunkWidth - (loaded.length % Chunk.chunkWidth));
+                        int yPos = r.nextInt(Chunk.chunkHeight - (loaded[0].length % Chunk.chunkHeight));
                         //Loop through the structure
                         for (int k = 0; k < loaded.length; k++) {
                             int y = j + (k + yPos) / Chunk.chunkHeight;

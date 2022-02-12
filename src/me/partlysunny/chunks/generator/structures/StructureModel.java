@@ -2,7 +2,6 @@ package me.partlysunny.chunks.generator.structures;
 
 import me.partlysunny.Main;
 import me.partlysunny.chunks.TileType;
-import org.apache.poi.ss.formula.functions.T;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,7 +46,7 @@ public record StructureModel(String path) {
             for (String type : strings) {
                 //Add the tile type to the array
                 if (!type.equalsIgnoreCase("null")) {
-                    returned[a][b] = TileType.valueOf(type.toUpperCase());
+                    returned[b][a] = TileType.valueOf(type.toUpperCase());
                 }
                 b++;
             }

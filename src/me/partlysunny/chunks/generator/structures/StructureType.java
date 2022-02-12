@@ -16,8 +16,7 @@ public enum StructureType {
     ROCK(Rock.class),
     LARGE_ROCK(LargeRock.class),
     CACTUS(Cactus.class),
-    TREE(Tree.class)
-    ;
+    TREE(Tree.class);
 
     private final Class<? extends Structure> clazz;
     private Structure impl;
@@ -31,18 +30,18 @@ public enum StructureType {
         }
     }
 
+    public static void loadStructures(World w) {
+        Main.logger.log(Level.INFO, "Generating structures...");
+        for (StructureType t : values()) {
+            t.addThis(w);
+        }
+    }
+
     public Class<? extends Structure> getClazz() {
         return clazz;
     }
 
     public void addThis(World world) {
         impl.generateInto(world);
-    }
-
-    public static void loadStructures(World w) {
-        Main.logger.log(Level.INFO, "Generating structures...");
-        for (StructureType t : values()) {
-            t.addThis(w);
-        }
     }
 }
