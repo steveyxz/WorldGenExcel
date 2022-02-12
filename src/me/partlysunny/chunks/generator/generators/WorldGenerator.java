@@ -3,6 +3,7 @@ package me.partlysunny.chunks.generator.generators;
 import me.partlysunny.chunks.World;
 import me.partlysunny.chunks.generator.biomes.Biome;
 import me.partlysunny.chunks.generator.biomes.BiomeGenerator;
+import me.partlysunny.chunks.generator.structures.StructureType;
 import me.partlysunny.utils.Pair;
 
 public class WorldGenerator {
@@ -75,6 +76,7 @@ public class WorldGenerator {
                 w.setChunk(i, j, DefaultCarver.carve(w.getChunk(i, j), topLeft, topRight, bottomLeft, bottomRight));
             }
         }
+        StructureType.loadStructures(w);
         return w;
     }
 
