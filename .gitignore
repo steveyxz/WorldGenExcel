@@ -1,2 +1,6 @@
 # Project exclude paths
 /out/
+#idea
+/.idea/
+#class files if that ever happens
+*.class

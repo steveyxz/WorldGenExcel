@@ -15,6 +15,7 @@ import static me.partlysunny.chunks.generator.generators.WorldGenerator.worldWid
 public class BiomeGenerator {
 
     private final Biome[][] biomeMap = new Biome[worldWidth][worldHeight];
+    private static final int MIN_BIOME_SIZE = 9;
 
     public Biome[][] generateBiomeMap() {
         Main.logger.log(Level.INFO, "Generating biomes...");
@@ -37,9 +38,9 @@ public class BiomeGenerator {
         toGenerate.add(root);
         Biome biome = Biome.getRandomBiome();
         Random r = new Random();
-        int chunksGenerated = 0;
+        List<Pair<Integer>> chunksGenerated = new ArrayList<>();
         //Keep going until either we have generated max chunks or until toGenerate is empty
-        while (!toGenerate.isEmpty() && chunksGenerated < biome.getMaxSize()) {
+        while (!toGenerate.isEmpty() && chunksGenerated.size() < biome.getMaxSize()) {
             Pair<Integer> chunkPos = toGenerate.poll();
             biomeMap[chunkPos.getA()][chunkPos.getB()] = biome;
             //top, bottom, left, right tiles
@@ -91,7 +92,52 @@ public class BiomeGenerator {
                     returned.add(right);
                 }
             }
-            chunksGenerated++;
+            chunksGenerated.add(chunkPos);
+        }
+        if (chunksGenerated.size() < MIN_BIOME_SIZE) {
+            returned.clear();
+            for (Pair<Integer> p : chunksGenerated) {
+                //top, bottom, left, right tiles
+                Pair<Integer> top = new Pair<>(p.getA(), p.getB() - 1);
+                Pair<Integer> bottom = new Pair<>(p.getA(), p.getB() + 1);
+                Pair<Integer> left = new Pair<>(p.getA() - 1, p.getB());
+                Pair<Integer> right = new Pair<>(p.getA() + 1, p.getB());
+                //Check if top is allowed and it is empty
+                if (!(top.getA() < 0 || top.getA() > worldHeight - 1 || top.getB() < 0 || top.getB() > worldWidth - 1 || biomeMap[top.getA()][top.getB()] == null) && !chunksGenerated.contains(top)) {
+                    biomeMap[p.getA()][p.getB()] = biomeMap[top.getA()][top.getB()];
+                }
+                //Check if bottom is allowed and it is empty
+                else if (!(bottom.getA() < 0 || bottom.getA() > worldHeight - 1 || bottom.getB() < 0 || bottom.getB() > worldWidth - 1 || biomeMap[bottom.getA()][bottom.getB()] == null) && !chunksGenerated.contains(bottom)) {
+                    biomeMap[p.getA()][p.getB()] = biomeMap[bottom.getA()][bottom.getB()];
+                }
+                //Check if left is allowed and it is empty
+                else if (!(left.getA() < 0 || left.getA() > worldHeight - 1 || left.getB() < 0 || left.getB() > worldWidth - 1 || biomeMap[left.getA()][left.getB()] == null) && !chunksGenerated.contains(left)) {
+                    biomeMap[p.getA()][p.getB()] = biomeMap[left.getA()][left.getB()];
+                }
+                //Check if right is allowed and it is empty
+                else if (!(right.getA() < 0 || right.getA() > worldHeight - 1 || right.getB() < 0 || right.getB() > worldWidth - 1 || biomeMap[right.getA()][right.getB()] == null) && !chunksGenerated.contains(right)) {
+                    biomeMap[p.getA()][p.getB()] = biomeMap[right.getA()][right.getB()];
+                } else {
+                    //Check if top is allowed and it is empty
+                    if (!(top.getA() < 0 || top.getA() > worldHeight - 1 || top.getB() < 0 || top.getB() > worldWidth - 1 || biomeMap[top.getA()][top.getB()] != null)) {
+                        biomeMap[p.getA()][p.getB()] = biomeMap[top.getA()][top.getB()];
+                    }
+                    //Check if bottom is allowed and it is empty
+                    else if (!(bottom.getA() < 0 || bottom.getA() > worldHeight - 1 || bottom.getB() < 0 || bottom.getB() > worldWidth - 1 || biomeMap[bottom.getA()][bottom.getB()] != null)) {
+                        biomeMap[p.getA()][p.getB()] = biomeMap[bottom.getA()][bottom.getB()];
+                    }
+                    //Check if left is allowed and it is empty
+                    else if (!(left.getA() < 0 || left.getA() > worldHeight - 1 || left.getB() < 0 || left.getB() > worldWidth - 1 || biomeMap[left.getA()][left.getB()] != null)) {
+                        biomeMap[p.getA()][p.getB()] = biomeMap[left.getA()][left.getB()];
+                    }
+                    //Check if right is allowed and it is empty
+                    else if (!(right.getA() < 0 || right.getA() > worldHeight - 1 || right.getB() < 0 || right.getB() > worldWidth - 1 || biomeMap[right.getA()][right.getB()] != null)) {
+                        biomeMap[p.getA()][p.getB()] = biomeMap[right.getA()][right.getB()];
+                    } else {
+                        biomeMap[p.getA()][p.getB()] = Biome.GRASSLANDS;
+                    }
+                }
+            }
         }
         return returned;
     }
