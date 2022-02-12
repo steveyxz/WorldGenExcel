@@ -21,4 +21,7 @@ public class Chunk {
         return colors[x][y];
     }
 
+    public Biome getBiome() {
+        return biome;
+    }
 }

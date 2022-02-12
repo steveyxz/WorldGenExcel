@@ -14,8 +14,8 @@ import static me.partlysunny.chunks.generator.generators.WorldGenerator.worldWid
 
 public class BiomeGenerator {
 
-    private final Biome[][] biomeMap = new Biome[worldWidth][worldHeight];
     private static final int MIN_BIOME_SIZE = 9;
+    private final Biome[][] biomeMap = new Biome[worldWidth][worldHeight];
 
     public Biome[][] generateBiomeMap() {
         Main.logger.log(Level.INFO, "Generating biomes...");

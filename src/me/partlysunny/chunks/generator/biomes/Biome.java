@@ -1,17 +1,17 @@
 package me.partlysunny.chunks.generator.biomes;
 
 import me.partlysunny.chunks.Chunk;
+import me.partlysunny.chunks.TileType;
 import me.partlysunny.chunks.generator.Generator;
 import me.partlysunny.chunks.generator.generators.*;
 import me.partlysunny.utils.RandomCollection;
 
 public enum Biome {
 
-    DESERT(4, 0.7f, 100, new DesertGenerator()),
-    OCEAN(2, 0.7f, 120, new OceanGenerator()),
-    GRASSLANDS(8, 0.6f, 90, new GrasslandGenerator()),
-    PRAIRIE(3, 0.6f, 70, new PrairieGenerator()),
-    MOUNTAINS(4, 0.5f, 40, new MountainGenerator());
+    DESERT(6, 0.7f, 340, new DesertGenerator(), TileType.SAND),
+    OCEAN(5, 0.9f, 640, new OceanGenerator(), TileType.WATER),
+    GRASSLANDS(8, 0.6f, 250, new GrasslandGenerator(), TileType.GRASS),
+    MOUNTAINS(4, 0.5f, 100, new MountainGenerator(), TileType.ROCK);
 
     private static final RandomCollection<Biome> randomChoicer = new RandomCollection<>();
 
@@ -26,12 +26,14 @@ public enum Biome {
     private final float maxSize;
     private final int weight;
     private final Generator generator;
+    private final TileType defaultTileType;
 
-    Biome(int weight, float spreadChance, float maxSize, Generator generator) {
+    Biome(int weight, float spreadChance, float maxSize, Generator generator, TileType defaultTileType) {
         this.maxSize = maxSize;
         this.spreadChance = spreadChance;
         this.weight = weight;
         this.generator = generator;
+        this.defaultTileType = defaultTileType;
     }
 
     public static Biome getRandomBiome() {
@@ -52,6 +54,10 @@ public enum Biome {
 
     public Generator getGenerator() {
         return generator;
+    }
+
+    public TileType getDefaultTileType() {
+        return defaultTileType;
     }
 
     public Chunk generate() {

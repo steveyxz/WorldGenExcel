@@ -7,8 +7,8 @@ import me.partlysunny.utils.Pair;
 
 public class WorldGenerator {
 
-    public static final int worldWidth = 50;
-    public static final int worldHeight = 50;
+    public static final int worldWidth = 200;
+    public static final int worldHeight = 200;
     private final Biome[][] biomeMap;
 
     public WorldGenerator() {
@@ -20,13 +20,12 @@ public class WorldGenerator {
         for (int i = 0; i < worldWidth; i++) {
             for (int j = 0; j < worldHeight; j++) {
                 Biome biome = biomeMap[i][j];
-                //Bug that biome map isn't complete
+                //top, bottom, left, right tiles
+                Pair<Integer> top = new Pair<>(i, j - 1);
+                Pair<Integer> bottom = new Pair<>(i, j + 1);
+                Pair<Integer> left = new Pair<>(i - 1, j);
+                Pair<Integer> right = new Pair<>(i + 1, j);
                 if (biome == null) {
-                    //top, bottom, left, right tiles
-                    Pair<Integer> top = new Pair<>(i, j - 1);
-                    Pair<Integer> bottom = new Pair<>(i, j + 1);
-                    Pair<Integer> left = new Pair<>(i - 1, j);
-                    Pair<Integer> right = new Pair<>(i + 1, j);
                     //Check if top is allowed and it is empty
                     if (!(top.getA() < 0 || top.getA() > worldHeight - 1 || top.getB() < 0 || top.getB() > worldWidth - 1 || biomeMap[top.getA()][top.getB()] == null)) {
                         biome = biomeMap[top.getA()][top.getB()];
@@ -49,7 +48,41 @@ public class WorldGenerator {
                 w.setChunk(i, j, biome.generate());
             }
         }
+        for (int i = 0; i < worldWidth; i++) {
+            for (int j = 0; j < worldHeight; j++) {
+                //top, bottom, left, right tiles
+                Pair<Integer> top = new Pair<>(i, j - 1);
+                Pair<Integer> bottom = new Pair<>(i, j + 1);
+                Pair<Integer> left = new Pair<>(i - 1, j);
+                Pair<Integer> right = new Pair<>(i + 1, j);
+                Biome topRight = null, topLeft = null, bottomRight = null, bottomLeft = null;
+                if (getBiomeAt(left) != null) {
+                    if (getBiomeAt(top) == getBiomeAt(left)) {
+                        topLeft = getBiomeAt(top);
+                    }
+                    if (bottom == left) {
+                        bottomLeft = getBiomeAt(bottom);
+                    }
+                }
+                if (getBiomeAt(right) != null) {
+                    if (getBiomeAt(top) == getBiomeAt(right)) {
+                        topRight = getBiomeAt(top);
+                    }
+                    if (getBiomeAt(bottom) == getBiomeAt(right)) {
+                        bottomRight = getBiomeAt(bottom);
+                    }
+                }
+                w.setChunk(i, j, DefaultCarver.carve(w.getChunk(i, j), topLeft, topRight, bottomLeft, bottomRight));
+            }
+        }
         return w;
+    }
+
+    private Biome getBiomeAt(Pair<Integer> location) {
+        if (!(location.getA() < 0 || location.getA() > worldHeight - 1 || location.getB() < 0 || location.getB() > worldWidth - 1 || biomeMap[location.getA()][location.getB()] == null)) {
+            return biomeMap[location.getA()][location.getB()];
+        }
+        return null;
     }
 
 

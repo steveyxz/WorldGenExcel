@@ -8,12 +8,10 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 
 public enum TileType {
 
-    GRASS(IndexedColors.LIGHT_GREEN.getIndex(), IndexedColors.LIGHT_GREEN.getIndex(), FillPatternType.SOLID_FOREGROUND),
+    GRASS(IndexedColors.GREEN.getIndex(), IndexedColors.GREEN.getIndex(), FillPatternType.SOLID_FOREGROUND),
     SAND(IndexedColors.YELLOW.getIndex(), IndexedColors.YELLOW.getIndex(), FillPatternType.SOLID_FOREGROUND),
-    DRY_GRASS(IndexedColors.OLIVE_GREEN.getIndex(), IndexedColors.GREEN.getIndex(), FillPatternType.SOLID_FOREGROUND),
     ROCK(IndexedColors.GREY_50_PERCENT.getIndex(), IndexedColors.GREY_50_PERCENT.getIndex(), FillPatternType.SOLID_FOREGROUND),
-    CACTUS(IndexedColors.DARK_GREEN.getIndex(), IndexedColors.DARK_GREEN.getIndex(), FillPatternType.SOLID_FOREGROUND),
-    DIRT(IndexedColors.BROWN.getIndex(), IndexedColors.BROWN.getIndex(), FillPatternType.SOLID_FOREGROUND),
+    CACTUS(IndexedColors.OLIVE_GREEN.getIndex(), IndexedColors.OLIVE_GREEN.getIndex(), FillPatternType.SOLID_FOREGROUND),
     WATER(IndexedColors.BLUE.getIndex(), IndexedColors.BLUE.getIndex(), FillPatternType.SOLID_FOREGROUND);
 
     private final short foreground;
