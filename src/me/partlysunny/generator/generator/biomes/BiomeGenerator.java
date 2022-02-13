@@ -3,10 +3,7 @@ package me.partlysunny.generator.generator.biomes;
 import me.partlysunny.Main;
 import me.partlysunny.utils.Pair;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.logging.Level;
 
 import static me.partlysunny.generator.generator.generators.WorldGenerator.worldHeight;
@@ -19,24 +16,42 @@ public class BiomeGenerator {
 
     public Biome[][] generateBiomeMap() {
         Main.logger.log(Level.INFO, "Generating biomes...");
-        ArrayDeque<Pair<Integer>> generationQueue = new ArrayDeque<>(generateChunks(new Pair<>(worldWidth / 2, worldHeight / 2)));
+        ArrayDeque<Map<Pair<Integer>, Biome>> generationQueue = new ArrayDeque<>();
+        //Add starting seed
+        Map<Biome, List<Pair<Integer>>> starting = generateChunks(new Pair<>(worldWidth / 2, worldHeight / 2), Biome.GRASSLANDS);
+        for (Biome b : starting.keySet()) {
+            List<Pair<Integer>> i = starting.get(b);
+            for (Pair<Integer> pair : i) {
+                Map<Pair<Integer>, Biome> a = new HashMap<>();
+                a.put(pair, b);
+                generationQueue.add(a);
+            }
+        }
         //Keep generating
         while (!generationQueue.isEmpty()) {
-            Pair<Integer> position = generationQueue.poll();
-            generationQueue.addAll(generateChunks(position));
+            Map<Pair<Integer>, Biome> position = generationQueue.poll();
+            Map<Biome, List<Pair<Integer>>> info = generateChunks((Pair<Integer>) position.keySet().toArray()[0], (Biome) position.values().toArray()[0]);
+            for (Biome b : info.keySet()) {
+                List<Pair<Integer>> i = info.get(b);
+                for (Pair<Integer> pair : i) {
+                    Map<Pair<Integer>, Biome> a = new HashMap<>();
+                    a.put(pair, b);
+                    generationQueue.add(a);
+                }
+            }
         }
         return biomeMap;
     }
 
-    private List<Pair<Integer>> generateChunks(Pair<Integer> root) {
+    private Map<Biome, List<Pair<Integer>>> generateChunks(Pair<Integer> root, Biome from) {
         //If there already is a tile there (say that tile is filled before it gets to this), return
         if (biomeMap[root.getA()][root.getB()] != null) {
-            return new ArrayList<>();
+            return new HashMap<>();
         }
         List<Pair<Integer>> returned = new ArrayList<>();
         ArrayDeque<Pair<Integer>> toGenerate = new ArrayDeque<>();
         toGenerate.add(root);
-        Biome biome = Biome.getRandomBiome();
+        Biome biome = Biome.getRandomBiome(from);
         Random r = new Random();
         List<Pair<Integer>> chunksGenerated = new ArrayList<>();
         //Keep going until either we have generated max chunks or until toGenerate is empty
@@ -139,6 +154,8 @@ public class BiomeGenerator {
                 }
             }
         }
-        return returned;
+        Map<Biome, List<Pair<Integer>>> realReturned = new HashMap<>();
+        realReturned.put(biome, returned);
+        return realReturned;
     }
 }
