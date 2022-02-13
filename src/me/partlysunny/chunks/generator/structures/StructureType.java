@@ -6,7 +6,8 @@ import me.partlysunny.chunks.generator.structures.cactus.Cactus;
 import me.partlysunny.chunks.generator.structures.rocks.LargeRock;
 import me.partlysunny.chunks.generator.structures.rocks.Rock;
 import me.partlysunny.chunks.generator.structures.rocks.SmallRock;
-import me.partlysunny.chunks.generator.structures.tree.Tree;
+import me.partlysunny.chunks.generator.structures.tree.GrasslandTree;
+import me.partlysunny.chunks.generator.structures.tree.OakTree;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
@@ -16,7 +17,9 @@ public enum StructureType {
     ROCK(Rock.class),
     LARGE_ROCK(LargeRock.class),
     CACTUS(Cactus.class),
-    TREE(Tree.class);
+    OAK_TREE(OakTree.class),
+    GRASSLAND_TREE(GrasslandTree.class)
+    ;
 
     private final Class<? extends Structure> clazz;
     private Structure impl;

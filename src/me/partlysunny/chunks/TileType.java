@@ -13,10 +13,11 @@ import java.awt.*;
 public enum TileType {
 
     GRASS(new Color(95, 208, 67), new Color(95, 208, 67), FillPatternType.SOLID_FOREGROUND),
-    SAND(IndexedColors.YELLOW.getIndex(), IndexedColors.YELLOW.getIndex(), FillPatternType.SOLID_FOREGROUND),
+    SAND(new Color(255, 255, 156), new Color(255, 255, 156), FillPatternType.SOLID_FOREGROUND),
     ROCK(IndexedColors.GREY_50_PERCENT.getIndex(), IndexedColors.GREY_50_PERCENT.getIndex(), FillPatternType.SOLID_FOREGROUND),
     CACTUS(IndexedColors.GREEN.getIndex(), IndexedColors.GREEN.getIndex(), FillPatternType.SOLID_FOREGROUND),
-    LEAF(new Color(52, 129, 32), new Color(52, 129, 32), FillPatternType.SOLID_FOREGROUND),
+    OAK_LEAF(new Color(52, 129, 32), new Color(52, 129, 32), FillPatternType.SOLID_FOREGROUND),
+    GRASSLAND_LEAF(new Color(73, 150, 84), new Color(73, 150, 84), FillPatternType.SOLID_FOREGROUND),
     WOOD(IndexedColors.BROWN.getIndex(), IndexedColors.BROWN.getIndex(), FillPatternType.SOLID_FOREGROUND),
     WATER(new Color(92, 171, 247), new Color(92, 171, 247), FillPatternType.SOLID_FOREGROUND);
 

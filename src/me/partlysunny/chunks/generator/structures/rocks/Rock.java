@@ -6,7 +6,7 @@ import me.partlysunny.chunks.generator.structures.StructureModel;
 
 public class Rock extends Structure {
     public Rock() {
-        super(0.01f, new Biome[]{Biome.GRASSLANDS, Biome.DESERT, Biome.FOREST});
+        super(0.01f, new Biome[]{Biome.GRASSLANDS, Biome.DESERT, Biome.OAK_FOREST});
     }
 
     @Override

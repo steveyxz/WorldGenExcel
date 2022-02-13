@@ -1,9 +1,7 @@
 ## Basic world generation for Excel!
 ### How to use (For windows):
-1. Make sure you have **Java 16** installed on your computer
-2. Download the file WorldGenExcel.jar located in src
-3. Open command prompt and navigate to the file where you put WorldGenExcel.jar and run the command `java -jar WorldGenExcel.jar "path to the file"` (e.g. `java -jar WorldGenExcel.jar "C:/Users/Me/world.xlsx"` would make the file at that directory.)
-4. Open your generated world!
+1. Download the latest release from Releases
+2. run `java -jar WorldGenExcelVersion.jar "path_to_file"`
 
 ### How to add new biomes
 1. Create a generator which implements the Generator interface. This will return a Chunk which will be a generated chunk of that biome.
