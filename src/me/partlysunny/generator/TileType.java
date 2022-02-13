@@ -1,4 +1,4 @@
-package me.partlysunny.chunks;
+package me.partlysunny.generator;
 
 import me.partlysunny.Main;
 import org.apache.poi.ss.usermodel.Cell;

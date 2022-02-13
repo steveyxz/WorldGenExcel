@@ -1,6 +1,6 @@
-package me.partlysunny.chunks;
+package me.partlysunny.generator;
 
-import me.partlysunny.chunks.generator.biomes.Biome;
+import me.partlysunny.generator.generator.biomes.Biome;
 
 public class Chunk {
 

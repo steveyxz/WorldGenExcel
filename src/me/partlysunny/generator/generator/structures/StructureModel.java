@@ -1,7 +1,7 @@
-package me.partlysunny.chunks.generator.structures;
+package me.partlysunny.generator.generator.structures;
 
 import me.partlysunny.Main;
-import me.partlysunny.chunks.TileType;
+import me.partlysunny.generator.TileType;
 
 import java.io.BufferedReader;
 import java.io.IOException;

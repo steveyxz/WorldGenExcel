@@ -1,4 +1,4 @@
-package me.partlysunny.chunks;
+package me.partlysunny.generator;
 
 public class World {
 

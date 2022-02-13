@@ -1,4 +1,4 @@
-package me.partlysunny.chunks.generator.biomes;
+package me.partlysunny.generator.generator.biomes;
 
 import me.partlysunny.Main;
 import me.partlysunny.utils.Pair;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 
-import static me.partlysunny.chunks.generator.generators.WorldGenerator.worldHeight;
-import static me.partlysunny.chunks.generator.generators.WorldGenerator.worldWidth;
+import static me.partlysunny.generator.generator.generators.WorldGenerator.worldHeight;
+import static me.partlysunny.generator.generator.generators.WorldGenerator.worldWidth;
 
 public class BiomeGenerator {
 

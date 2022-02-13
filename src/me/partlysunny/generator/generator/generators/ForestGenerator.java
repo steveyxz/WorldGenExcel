@@ -1,9 +1,9 @@
-package me.partlysunny.chunks.generator.generators;
+package me.partlysunny.generator.generator.generators;
 
-import me.partlysunny.chunks.Chunk;
-import me.partlysunny.chunks.TileType;
-import me.partlysunny.chunks.generator.Generator;
-import me.partlysunny.chunks.generator.biomes.Biome;
+import me.partlysunny.generator.Chunk;
+import me.partlysunny.generator.TileType;
+import me.partlysunny.generator.generator.Generator;
+import me.partlysunny.generator.generator.biomes.Biome;
 
 public class ForestGenerator implements Generator {
     @Override

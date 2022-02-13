@@ -1,9 +1,9 @@
 package me.partlysunny;
 
-import me.partlysunny.chunks.Chunk;
-import me.partlysunny.chunks.TileType;
-import me.partlysunny.chunks.World;
-import me.partlysunny.chunks.generator.generators.WorldGenerator;
+import me.partlysunny.generator.Chunk;
+import me.partlysunny.generator.TileType;
+import me.partlysunny.generator.World;
+import me.partlysunny.generator.generator.generators.WorldGenerator;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static me.partlysunny.chunks.Chunk.chunkHeight;
+import static me.partlysunny.generator.Chunk.chunkHeight;
 
 public class Main {
 

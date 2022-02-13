@@ -1,10 +1,10 @@
-package me.partlysunny.chunks.generator.structures;
+package me.partlysunny.generator.generator.structures;
 
 import me.partlysunny.Main;
-import me.partlysunny.chunks.Chunk;
-import me.partlysunny.chunks.TileType;
-import me.partlysunny.chunks.World;
-import me.partlysunny.chunks.generator.biomes.Biome;
+import me.partlysunny.generator.Chunk;
+import me.partlysunny.generator.TileType;
+import me.partlysunny.generator.World;
+import me.partlysunny.generator.generator.biomes.Biome;
 
 import java.io.IOException;
 import java.util.List;

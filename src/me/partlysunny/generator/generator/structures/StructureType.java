@@ -1,13 +1,13 @@
-package me.partlysunny.chunks.generator.structures;
+package me.partlysunny.generator.generator.structures;
 
 import me.partlysunny.Main;
-import me.partlysunny.chunks.World;
-import me.partlysunny.chunks.generator.structures.cactus.Cactus;
-import me.partlysunny.chunks.generator.structures.rocks.LargeRock;
-import me.partlysunny.chunks.generator.structures.rocks.Rock;
-import me.partlysunny.chunks.generator.structures.rocks.SmallRock;
-import me.partlysunny.chunks.generator.structures.tree.GrasslandTree;
-import me.partlysunny.chunks.generator.structures.tree.OakTree;
+import me.partlysunny.generator.World;
+import me.partlysunny.generator.generator.structures.cactus.Cactus;
+import me.partlysunny.generator.generator.structures.rocks.LargeRock;
+import me.partlysunny.generator.generator.structures.rocks.Rock;
+import me.partlysunny.generator.generator.structures.rocks.SmallRock;
+import me.partlysunny.generator.generator.structures.tree.GrasslandTree;
+import me.partlysunny.generator.generator.structures.tree.OakTree;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;

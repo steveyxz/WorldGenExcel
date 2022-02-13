@@ -1,8 +1,8 @@
-package me.partlysunny.chunks.generator.structures.rocks;
+package me.partlysunny.generator.generator.structures.rocks;
 
-import me.partlysunny.chunks.generator.biomes.Biome;
-import me.partlysunny.chunks.generator.structures.Structure;
-import me.partlysunny.chunks.generator.structures.StructureModel;
+import me.partlysunny.generator.generator.biomes.Biome;
+import me.partlysunny.generator.generator.structures.Structure;
+import me.partlysunny.generator.generator.structures.StructureModel;
 
 public class Rock extends Structure {
     public Rock() {
