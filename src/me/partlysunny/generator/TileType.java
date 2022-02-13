@@ -17,9 +17,13 @@ public enum TileType {
     ROCK(IndexedColors.GREY_50_PERCENT.getIndex(), IndexedColors.GREY_50_PERCENT.getIndex(), FillPatternType.SOLID_FOREGROUND),
     CACTUS(IndexedColors.GREEN.getIndex(), IndexedColors.GREEN.getIndex(), FillPatternType.SOLID_FOREGROUND),
     OAK_LEAF(new Color(52, 129, 32), new Color(52, 129, 32), FillPatternType.SOLID_FOREGROUND),
+    BIRCH_LEAF(new Color(136, 171, 96), new Color(136, 171, 96), FillPatternType.SOLID_FOREGROUND),
     GRASSLAND_LEAF(new Color(73, 150, 84), new Color(73, 150, 84), FillPatternType.SOLID_FOREGROUND),
+    PINE_LEAF(new Color(7, 65, 8), new Color(7, 65, 8), FillPatternType.SOLID_FOREGROUND),
     WOOD(IndexedColors.BROWN.getIndex(), IndexedColors.BROWN.getIndex(), FillPatternType.SOLID_FOREGROUND),
-    WATER(new Color(92, 171, 247), new Color(92, 171, 247), FillPatternType.SOLID_FOREGROUND);
+    BIRCH_WOOD(IndexedColors.WHITE.getIndex(), IndexedColors.WHITE.getIndex(), FillPatternType.SOLID_FOREGROUND),
+    WATER(new Color(92, 171, 247), new Color(92, 171, 247), FillPatternType.SOLID_FOREGROUND),
+    SNOW(IndexedColors.WHITE.getIndex(), IndexedColors.WHITE.getIndex(), FillPatternType.SOLID_FOREGROUND);
 
     private final short foreground;
     private final short background;

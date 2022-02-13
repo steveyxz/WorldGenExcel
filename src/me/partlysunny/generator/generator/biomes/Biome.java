@@ -11,8 +11,11 @@ public enum Biome {
     DESERT(6, 0.7f, 340, new DesertGenerator(), TileType.SAND),
     OCEAN(5, 0.9f, 640, new OceanGenerator(), TileType.WATER),
     GRASSLANDS(6, 0.6f, 250, new GrasslandGenerator(), TileType.GRASS),
-    OAK_FOREST(6, 0.5f, 150, new ForestGenerator(), TileType.GRASS),
-    MOUNTAINS(4, 0.5f, 100, new MountainGenerator(), TileType.ROCK);
+    OAK_FOREST(3, 0.5f, 150, new ForestGenerator(), TileType.GRASS),
+    MOUNTAINS(4, 0.5f, 100, new MountainGenerator(), TileType.ROCK),
+    SNOWY_PLAINS(1, 0.8f, 250, new SnowGenerator(), TileType.SNOW),
+    SNOWY_FOREST(1, 0.8f, 250, new SnowGenerator(), TileType.SNOW),
+    BIRCH_FOREST(3, 0.5f, 150, new ForestGenerator(), TileType.GRASS);
 
     private static final RandomCollection<Biome> randomChoicer = new RandomCollection<>();
 
