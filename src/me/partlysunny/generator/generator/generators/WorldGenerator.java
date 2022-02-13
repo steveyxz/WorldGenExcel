@@ -61,7 +61,7 @@ public class WorldGenerator {
                     if (getBiomeAt(top) == getBiomeAt(left)) {
                         topLeft = getBiomeAt(top);
                     }
-                    if (bottom == left) {
+                    if (getBiomeAt(bottom) == getBiomeAt(left)) {
                         bottomLeft = getBiomeAt(bottom);
                     }
                 }
